@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$valor  = isset($_POST['valor'])  ? floatval($_POST['valor'])  : 0;
+$valor  = isset($_POST['valor'])  ? numero($_POST['valor'])  : 0;
 $codigo = isset($_POST['codigo']) ? intval($_POST['codigo'])   : 0;
 
 if ($codigo == 1) {

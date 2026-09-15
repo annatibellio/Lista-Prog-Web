@@ -6,9 +6,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$a = isset($_POST['a']) ? floatval($_POST['a']) : 0;
-$b = isset($_POST['b']) ? floatval($_POST['b']) : 0;
-$c = isset($_POST['c']) ? floatval($_POST['c']) : 0;
+$a = isset($_POST['a']) ? numero($_POST['a']) : 0;
+$b = isset($_POST['b']) ? numero($_POST['b']) : 0;
+$c = isset($_POST['c']) ? numero($_POST['c']) : 0;
 
 $valido = ($a + $b > $c) && ($a + $c > $b) && ($b + $c > $a);
 

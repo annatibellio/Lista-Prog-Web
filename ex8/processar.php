@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 $dias   = ["Segunda-feira","Terça-feira","Quarta-feira","Quinta-feira","Sexta-feira","Sábado","Domingo"];
-$vendas = isset($_POST['vendas']) ? array_map('floatval', $_POST['vendas']) : [];
+$vendas = isset($_POST['vendas']) ? array_map('numero', $_POST['vendas']) : [];
 
 if (count($vendas) === 0) {
     header('Location: index.php');

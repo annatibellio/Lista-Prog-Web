@@ -1,8 +1,14 @@
 <?php
 require __DIR__ . '/../includes/config.php';
 
-$alturaPre = isset($_GET['altura']) ? floatval($_GET['altura']) : null;
+$alturaPre = isset($_GET['altura']) ? numero($_GET['altura']) : null;
 $origem    = $_GET['origem'] ?? null;
+
+// o enunciado pede 10 pessoas, então esse é o padrão. mas dá pra ajustar
+// (mínimo 2, só pra não ficar sem sentido, e um teto de 30 pra não virar bagunça)
+$qtd = isset($_GET['qtd']) ? intval($_GET['qtd']) : 10;
+if ($qtd < 2) { $qtd = 2; }
+if ($qtd > 30) { $qtd = 30; }
 
 $base   = '../';
 $titulo = 'Questão 6 - Estatística de Alturas';
@@ -18,11 +24,17 @@ require __DIR__ . '/../includes/header.php';
     </div>
   <?php endif; ?>
 
+  <form action="index.php" method="GET" class="form-qtd">
+    <label for="qtd">Quantidade de pessoas (padrão do exercício: 10):</label>
+    <input type="number" step="1" min="2" max="30" id="qtd" name="qtd" value="<?php echo $qtd; ?>">
+    <button type="submit" class="btn-secundario">Atualizar tabela</button>
+  </form>
+
   <form action="processar.php" method="POST">
     <table>
       <thead><tr><th>Pessoa</th><th>Idade</th><th>Altura (m)</th></tr></thead>
       <tbody>
-      <?php for ($i = 1; $i <= 10; $i++): ?>
+      <?php for ($i = 1; $i <= $qtd; $i++): ?>
         <tr>
           <td><?php echo $i; ?></td>
           <td><input type="number" step="1" min="0" name="idade[]" required></td>

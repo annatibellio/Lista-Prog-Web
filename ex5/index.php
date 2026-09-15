@@ -4,7 +4,7 @@ require __DIR__ . '/../includes/config.php';
 // Recebe (opcionalmente) um valor inicial vindo de outro exercício (ex1 ou ex8).
 $origemNomes = ['ex1' => 'Exercício 1 (Desconto em Compra)', 'ex8' => 'Exercício 8 (Faturamento Diário)'];
 $origem      = $_GET['origem'] ?? null;
-$inicialPre  = isset($_GET['inicial']) ? floatval($_GET['inicial']) : 1000;
+$inicialPre  = isset($_GET['inicial']) ? numero($_GET['inicial']) : 1000;
 
 $base   = '../';
 $titulo = 'Questão 5 - Juros Compostos';

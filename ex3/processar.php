@@ -6,8 +6,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$peso   = isset($_POST['peso'])   ? floatval($_POST['peso'])   : 0;
-$altura = isset($_POST['altura']) ? floatval($_POST['altura']) : 0;
+$peso   = isset($_POST['peso'])   ? numero($_POST['peso'])   : 0;
+$altura = isset($_POST['altura']) ? numero($_POST['altura']) : 0;
 
 $imc = ($altura > 0) ? $peso / ($altura * $altura) : 0;
 

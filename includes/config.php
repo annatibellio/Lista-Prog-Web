@@ -1,11 +1,8 @@
 <?php
-/**
- * Configuração central do site.
- * Todo exercício inclui este arquivo primeiro: ele inicia a sessão e
- * disponibiliza as funções usadas para os exercícios "conversarem" entre si
- * (cada cálculo pode salvar seu resultado na sessão e ser lido por outro
- * exercício, ou apenas aparecer no painel de resultados do menu).
- */
+// config.php - todo exercício inclui esse arquivo primeiro.
+// inicia a sessão e guarda as funções que os exercícios usam pra
+// salvar/ler resultado (é assim que um exercício consegue reaproveitar
+// o valor calculado em outro, tipo o total do ex1 indo pro ex5).
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -25,13 +22,9 @@ $GLOBALS['EXERCICIOS'] = [
     'ex10' => ['titulo' => 'Soma da Diagonal Principal',         'icone' => '🔢', 'desc' => 'Gere uma matriz 3x3 e some a diagonal principal.'],
 ];
 
-/**
- * Salva o resultado de um exercício na sessão do usuário.
- * $chave  = 'ex1', 'ex2', ... (bate com o índice de $GLOBALS['EXERCICIOS'])
- * $dados  = array associativo livre; deve conter pelo menos 'resumo' (texto
- *           curto exibido no painel de resultados) e pode conter outros
- *           valores brutos que outro exercício queira reaproveitar.
- */
+// salva o resultado de um exercício na sessão (chave tipo 'ex1', 'ex2'...)
+// $dados precisa ter pelo menos 'resumo', que é o texto curto mostrado
+// no painel de resultados do rodapé
 function salvarResultado($chave, array $dados)
 {
     $_SESSION['resultados'][$chave] = array_merge($dados, [
@@ -39,14 +32,26 @@ function salvarResultado($chave, array $dados)
     ]);
 }
 
-/** Lê o resultado salvo de um exercício específico (ou null se não existe). */
+// pega o resultado salvo de um exercício, ou null se ainda não calculou
 function obterResultado($chave)
 {
     return $_SESSION['resultados'][$chave] ?? null;
 }
 
-/** Lê todos os resultados já calculados nesta sessão. */
+// pega todos os resultados já calculados na sessão atual
 function todosResultados()
 {
     return $_SESSION['resultados'] ?? [];
+}
+
+// converte texto de input em número, aceitando tanto "1.57" quanto "1,57".
+// o input type="number" do navegador normalmente já manda com ponto, mas
+// isso evita dor de cabeça se alguém colar um valor com vírgula ou digitar
+// de outro jeito. usar essa função no lugar de floatval() direto nos campos
+// decimais (peso, altura, valores em R$, notas, taxa etc).
+function numero($valor)
+{
+    $valor = trim((string) $valor);
+    $valor = str_replace(',', '.', $valor);
+    return (float) $valor;
 }

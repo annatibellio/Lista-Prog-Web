@@ -19,8 +19,8 @@ if ($n === 0) {
 $linhas = "";
 for ($i = 0; $i < $n; $i++) {
     $nome  = htmlspecialchars($nomes[$i]);
-    $n1    = floatval($notas1[$i]);
-    $n2    = floatval($notas2[$i]);
+    $n1    = numero($notas1[$i]);
+    $n2    = numero($notas2[$i]);
     $media = ($n1 + $n2) / 2;
     $linhas .= "<tr><td>$nome</td><td>" . number_format($n1, 1, ',', '.') .
                "</td><td>" . number_format($n2, 1, ',', '.') .

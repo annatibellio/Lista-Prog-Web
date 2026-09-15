@@ -1,9 +1,6 @@
 <?php
-/**
- * Espera (opcionalmente) definidas antes do include:
- *   $base   -> prefixo relativo até a raiz do site ('' na raiz, '../' dentro de exN/)
- *   $titulo -> título da aba do navegador
- */
+// $base e $titulo podem vir definidos antes do include (senão usa o padrão).
+// $base é '' na raiz e '../' quando a página está dentro de uma pasta exN/
 $base   = $base   ?? '';
 $titulo = $titulo ?? 'Lista de Exercícios';
 ?>

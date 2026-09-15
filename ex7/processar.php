@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 $notas = isset($_POST['notas']) ? $_POST['notas'] : [];
-$notas = array_map('floatval', $notas);
+$notas = array_map('numero', $notas);
 
 if (count($notas) === 0) {
     header('Location: index.php');

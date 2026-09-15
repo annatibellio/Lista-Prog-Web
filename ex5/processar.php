@@ -6,8 +6,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$inicial = isset($_POST['inicial']) ? floatval($_POST['inicial']) : 1000;
-$taxa    = isset($_POST['taxa'])    ? floatval($_POST['taxa'])    : 1.5;
+$inicial = isset($_POST['inicial']) ? numero($_POST['inicial']) : 1000;
+$taxa    = isset($_POST['taxa'])    ? numero($_POST['taxa'])    : 1.5;
 $meses   = isset($_POST['meses'])   ? intval($_POST['meses'])     : 12;
 if ($meses < 1) { $meses = 1; }
 

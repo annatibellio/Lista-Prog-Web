@@ -180,6 +180,30 @@ button[type=submit]:active, .btn-primary:active{
   transform:translateY(0);
 }
 
+.form-qtd{
+  display:flex;
+  align-items:flex-end;
+  gap:10px;
+  margin-bottom:18px;
+  padding-bottom:18px;
+  border-bottom:1px dashed var(--border);
+}
+.form-qtd label{margin:0;flex:1;}
+.form-qtd input[type=number]{width:90px;}
+.form-qtd button.btn-secundario{
+  margin-top:0;
+  width:auto;
+  padding:11px 16px;
+  background:#fff;
+  color:var(--primary);
+  border:1.5px solid var(--primary-light);
+  box-shadow:none;
+}
+.form-qtd button.btn-secundario:hover{
+  transform:none;
+  background:#f4f4ff;
+}
+
 /* ---------- tables (used inside forms/results) ---------- */
 table{
   width:100%;

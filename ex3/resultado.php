@@ -22,7 +22,7 @@ require __DIR__ . '/../includes/header.php';
   </div>
   <div class="result-highlight">
     IMC calculado
-    <strong><?php echo number_format($imc, 2, ',', '.'); ?> — <?php echo $categoria; ?></strong>
+    <strong><?php echo number_format($imc, 2, ',', '.'); ?> (<?php echo $categoria; ?>)</strong>
   </div>
 
   <?php if ($altura > 0): ?>

@@ -22,7 +22,7 @@ $qtdMaiores  = 0;
 
 for ($i = 0; $i < $n; $i++) {
     $idade  = intval($idades[$i]);
-    $altura = floatval($alturas[$i]);
+    $altura = numero($alturas[$i]);
 
     if ($maiorAltura === null || $altura > $maiorAltura) {
         $maiorAltura = $altura;

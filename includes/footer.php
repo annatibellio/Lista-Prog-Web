@@ -1,5 +1,5 @@
 <?php
-/** Espera $base já definido (mesmo usado no header.php). */
+// usa o mesmo $base definido lá no header.php
 $base = $base ?? '';
 $resultados = todosResultados();
 $exercicios = $GLOBALS['EXERCICIOS'] ?? [];
