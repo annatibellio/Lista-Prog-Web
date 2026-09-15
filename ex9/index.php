@@ -21,19 +21,21 @@ require __DIR__ . '/../includes/header.php';
   </form>
 
   <form action="processar.php" method="POST">
-    <table>
+    <div class="tabela-scroll">
+    <table class="tabela-responsiva">
       <thead><tr><th>Aluno</th><th>Nome</th><th>Nota 1</th><th>Nota 2</th></tr></thead>
       <tbody>
       <?php for ($i = 1; $i <= $qtd; $i++): ?>
         <tr>
-          <td><?php echo $i; ?></td>
-          <td><input type="text" name="nome[]" required></td>
-          <td><input type="text" inputmode="decimal" pattern="[0-9]+([.,][0-9]+)?" placeholder="Ex: 8,5" name="nota1[]" required></td>
-          <td><input type="text" inputmode="decimal" pattern="[0-9]+([.,][0-9]+)?" placeholder="Ex: 8,5" name="nota2[]" required></td>
+          <td data-label="Aluno"><?php echo $i; ?></td>
+          <td data-label="Nome"><input type="text" name="nome[]" required></td>
+          <td data-label="Nota 1"><input type="text" inputmode="decimal" pattern="[0-9]+([.,][0-9]+)?" placeholder="Ex: 8,5" name="nota1[]" required></td>
+          <td data-label="Nota 2"><input type="text" inputmode="decimal" pattern="[0-9]+([.,][0-9]+)?" placeholder="Ex: 8,5" name="nota2[]" required></td>
         </tr>
       <?php endfor; ?>
       </tbody>
     </table>
+    </div>
     <button type="submit">Calcular Médias</button>
   </form>
 </div>

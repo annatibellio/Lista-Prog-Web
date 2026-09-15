@@ -31,11 +31,11 @@ require __DIR__ . '/../includes/header.php';
   <div class="conexao">
     💡 Quer ver esse valor rendendo? Simule um investimento com ele no <strong>Exercício 5 (Juros Compostos)</strong>.
     <br>
-    <a href="../ex5/index.php?inicial=<?php echo $valorFinal; ?>&origem=ex1">Usar R$ <?php echo number_format($valorFinal, 2, ',', '.'); ?> no Exercício 5 →</a>
+    <a href="../ex5/index.php?inicial=<?php echo $valorFinal; ?>&origem=ex1">Usar R$ <?php echo number_format($valorFinal, 2, ',', '.'); ?> no Exercício 5</a>
   </div>
 
   <div class="acoes">
-    <a class="voltar" href="index.php">↻ Calcular novamente</a>
+    <a class="voltar" href="index.php">Calcular novamente</a>
     <a class="ir-menu" href="../index.php">🏠 Voltar ao menu</a>
   </div>
 </div>

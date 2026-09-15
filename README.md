@@ -49,11 +49,47 @@ ENTREGA/
 
 Cada exercício segue o mesmo padrão (index → processar → resultado), então depois que entende um, entende todos. Isso ajuda a manter o código organizado sem repetir estrutura diferente em cada pasta.
 
+## Identidade visual e decisões de UX/UI
+
+Depois da primeira entrega, o projeto passou por uma revisão de estética, responsividade, acessibilidade e usabilidade. A ideia não foi refazer o site do zero — a identidade e a estrutura que já existiam foram mantidas — e sim resolver problemas reais de uso e dar mais personalidade ao visual. Principais decisões:
+
+- **Paleta em tons de rosa:** a cor de destaque do site deixou de ser azul/indigo e passou a ser um rosa (`--primary`), com um dourado suave (`--accent`) como cor complementar para caixas de sugestão e detalhes. A ideia foi ter uma estética delicada e com personalidade, mas sem exagerar (nada de rosa neon nem site "infantil") e mantendo bom contraste de texto.
+- **Simplificação da página inicial:** antes existiam dois caminhos fazendo a mesma coisa na primeira tela — o link "Lista de Exercícios" (marca) e o botão "Menu" — e os dois levavam pro mesmo lugar. O botão "Menu" foi removido da página inicial por ser redundante; ele só aparece quando você já está dentro de um exercício, onde de fato tem função (voltar pro menu). Os cards de exercício também ganharam um texto "Abrir exercício" no rodapé do card, deixando mais óbvio que são clicáveis.
+- **Navegação entre exercícios:** dentro de cada exercício, o topo agora tem um seletor "Ir para..." com a lista dos 10 exercícios, pra trocar de exercício sem precisar voltar pro menu principal a cada vez.
+- **Setas decorativas removidas:** algumas setas (↻, →) que só decoravam botões e links foram removidas, deixando o texto limpo (ex: "Calcular novamente" em vez de "↻ Calcular novamente"). Os ícones que representam cada exercício (💰, 📐, ⚖️ etc.) foram mantidos, porque ajudam a identificar cada card rapidamente e fazem parte da identidade visual que já existia.
+- **Textos que cortavam ou quebravam feio:** os títulos, resultados e textos dentro das caixas de destaque agora usam `overflow-wrap: break-word` e tamanhos de fonte fluidos (`clamp()`), pra nenhuma informação sumir ou ficar cortada em telas estreitas.
+
+## Acessibilidade
+
+Foi adicionada uma barrinha de acessibilidade (botão ♿ flutuante no canto da tela, presente em todas as páginas), com só as opções que realmente fazem sentido pro tipo de conteúdo do site:
+
+- **Aumentar/diminuir o tamanho do texto** (A- / A+), em 3 níveis, salvo no navegador da pessoa (`localStorage`) pra continuar aplicado ao navegar entre os exercícios.
+- **Alto contraste**, que troca a paleta pra uma versão com fundo escuro e texto/bordas com contraste bem mais alto.
+
+Além da barra, o site também tem: link "Pular para o conteúdo" (aparece ao navegar por teclado, pra pular o cabeçalho), foco visível em todo elemento clicável (`:focus-visible`), labels associados a todo input, área de toque mínima de ~44px em botões e campos, e `prefers-reduced-motion` respeitado para quem desativa animação no sistema.
+
+## Responsividade
+
+A responsividade foi repensada pra reorganizar o layout de verdade em vez de só encolher os elementos. Testado nas larguras: ~320–375px (celular pequeno), ~390–430px (celular grande), ~768px (tablet/iPad retrato), ~1024px (iPad paisagem/notebook), ~1280px (notebook) e 1920px+ (desktop). Principais ajustes:
+
+- Formulários em grade (`form-grid`) ficam em duas colunas em telas maiores e em uma coluna só a partir de ~600px de largura.
+- **Tabelas** (exercícios 6 e 9, que têm uma linha por pessoa/aluno) viram uma lista de "cards" empilhados em telas de celular, com cada campo mostrando seu rótulo (ex: "Idade: ...", "Altura (m): ...") em vez de depender de colunas apertadas — assim nada fica ilegível ou cortado. Em telas maiores, continuam como tabela normal, e sempre têm rolagem horizontal de segurança caso o conteúdo não caiba.
+- Inputs de texto usam fonte de 16px, porque abaixo disso o iPhone dá zoom automático ao focar o campo — outro detalhe que atrapalhava o uso no celular.
+- Nenhum elemento deveria conseguir "vazar" pra fora da tela horizontalmente; isso foi testado explicitamente nas larguras citadas acima.
+
+## Correção do horário no painel de resultados
+
+O painel "Resultados desta sessão" mostrava um horário errado porque o projeto nunca definia um fuso horário (`date_default_timezone_set`), então o PHP calculava a hora usando o fuso padrão do servidor (geralmente UTC), não o horário local. Isso foi corrigido fixando o fuso em `America/Sao_Paulo` no `config.php`. Também foi resolvido um pedido de usabilidade: cada item do painel agora é um link clicável que leva direto pra tela de resultado daquele exercício, mostrando de novo exatamente o que foi calculado (sem precisar preencher tudo de novo), já que o resultado continua guardado na sessão.
+
+## Entrada de altura no cálculo de IMC (exercício 3)
+
+O cálculo do IMC já estava correto, mas o campo de altura gerava confusão: pedia "1,57" mas nada impedia a pessoa de digitar "157" pensando em centímetros, o que gerava um IMC absurdo. Agora esse campo tem uma máscara: a pessoa digita só os números (ex: 1, 5, 7) e o campo forma "1,57" sozinho, com uma dica de exemplo abaixo. Também existe uma validação (no JavaScript do formulário e de novo no PHP, caso o JavaScript esteja desativado) que rejeita alturas fora da faixa humana normal (0,30m a 2,50m) e explica o motivo em vez de deixar passar um valor sem sentido.
+
 ## Decisões de implementação
 
 Algumas coisas ficaram um pouco diferentes do jeito mais "cru" que o enunciado pede, mas por escolha, não por engano. Documentando aqui pra ficar claro:
 
-- **Exercício 6 (10 pessoas) e Exercício 9 (3 alunos):** o enunciado pede uma quantidade fixa (10 pessoas no exercício 6, 3 alunos no exercício 9) e isso continua sendo o valor padrão quando a página abre. Mas adicionei um campo pra ajustar essa quantidade antes de preencher a tabela (de 2 a 30 pessoas no exercício 6, de 1 a 20 alunos no exercício 9). A lógica de cálculo em si não mudou nada, só passou a se adaptar ao tamanho do array recebido em vez de assumir um número fixo no código. Fiz isso pra deixar o exercício reutilizável sem descaracterizar o que foi pedido.
+- **Exercício 6 (10 pessoas), Exercício 7 (4 notas) e Exercício 9 (3 alunos):** o enunciado pede uma quantidade fixa (10 pessoas no exercício 6, 4 notas no exercício 7, 3 alunos no exercício 9) e isso continua sendo o valor padrão quando a página abre. Mas adicionei um campo pra ajustar essa quantidade antes de preencher a tabela/formulário (de 2 a 30 pessoas no exercício 6, de 2 a 15 notas no exercício 7, de 1 a 20 alunos no exercício 9). A lógica de cálculo em si não mudou nada, só passou a se adaptar ao tamanho do array recebido em vez de assumir um número fixo no código. Fiz isso pra deixar o exercício reutilizável sem descaracterizar o que foi pedido, e apliquei o mesmo padrão nos três lugares em que fazia sentido matemático (não faria sentido, por exemplo, no exercício 8, que é sempre os 7 dias de uma semana, ou no exercício 10, explicado abaixo).
 - **Exercício 10 (matriz 3x3):** esse eu deixei fixo em 3x3 mesmo. Aqui o "3x3" não é só uma quantidade de entradas, é o próprio conceito sendo praticado (percorrer índice de linha igual a índice de coluna pra achar a diagonal principal), então mudar isso ia fugir do que o exercício quer mostrar.
 - **Exercício 8 (faturamento):** o campo de venda de cada dia aceita valor negativo, porque no contexto do exercício um dia pode ter mais devolução/prejuízo do que venda. Os outros campos numéricos do site (valor de compra, notas, idade, altura, peso etc.) continuam exigindo valor positivo, porque negativo não faz sentido pra eles.
 - **Vírgula ou ponto nos campos decimais:** os campos de peso, altura, valores em R$, notas e taxa são campos de texto (não `type="number"`), porque o `input type="number"` do navegador às vezes só aceita ponto dependendo do idioma configurado no navegador, o que confunde quem vai digitar com vírgula (foi exatamente isso que causou o IMC errado ao testar: um "1,57" que não foi aceito virou "157"). Agora esses campos aceitam vírgula ou ponto igual, têm um exemplo escrito no placeholder (tipo "Ex: 1,57") e o PHP também trata os dois formatos antes de calcular.

@@ -17,6 +17,7 @@ require __DIR__ . '/includes/header.php';
       <span class="num">EXERCÍCIO <?php echo $numero; ?></span>
       <h3><?php echo htmlspecialchars($info['titulo']); ?></h3>
       <p><?php echo htmlspecialchars($info['desc']); ?></p>
+      <span class="abrir">Abrir exercício</span>
     </a>
   <?php endforeach; ?>
 </div>

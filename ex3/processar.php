@@ -9,6 +9,15 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $peso   = isset($_POST['peso'])   ? numero($_POST['peso'])   : 0;
 $altura = isset($_POST['altura']) ? numero($_POST['altura']) : 0;
 
+// Alguém pode digitar "157" pensando em centímetros mesmo com a máscara
+// (ex: colando o valor, ou com JS desativado). Uma altura fora da faixa
+// humana normal (0,30m a 2,50m) não é válida, então barramos aqui também,
+// e não só no JavaScript do formulário.
+if ($altura <= 0 || $altura < 0.3 || $altura > 2.5) {
+    header('Location: index.php?erro=altura');
+    exit;
+}
+
 $imc = ($altura > 0) ? $peso / ($altura * $altura) : 0;
 
 if ($imc < 18.5) {

@@ -26,7 +26,7 @@ require __DIR__ . '/../includes/header.php';
   </div>
 
   <div class="acoes">
-    <a class="voltar" href="index.php">↻ Calcular novamente</a>
+    <a class="voltar" href="index.php">Calcular novamente</a>
     <a class="ir-menu" href="../index.php">🏠 Voltar ao menu</a>
   </div>
 </div>

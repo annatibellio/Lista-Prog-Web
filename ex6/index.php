@@ -31,19 +31,21 @@ require __DIR__ . '/../includes/header.php';
   </form>
 
   <form action="processar.php" method="POST">
-    <table>
+    <div class="tabela-scroll">
+    <table class="tabela-responsiva">
       <thead><tr><th>Pessoa</th><th>Idade</th><th>Altura (m)</th></tr></thead>
       <tbody>
       <?php for ($i = 1; $i <= $qtd; $i++): ?>
         <tr>
-          <td><?php echo $i; ?></td>
-          <td><input type="number" step="1" min="0" name="idade[]" required></td>
-          <td><input type="text" inputmode="decimal" pattern="[0-9]+([.,][0-9]+)?" placeholder="Ex: 1,70" name="altura[]"
+          <td data-label="Pessoa"><?php echo $i; ?></td>
+          <td data-label="Idade"><input type="number" step="1" min="0" name="idade[]" required></td>
+          <td data-label="Altura (m)"><input type="text" inputmode="decimal" pattern="[0-9]+([.,][0-9]+)?" placeholder="Ex: 1,70" name="altura[]"
                      value="<?php echo ($i === 1 && $alturaPre) ? htmlspecialchars(number_format($alturaPre, 2, ',', '.')) : ''; ?>" required></td>
         </tr>
       <?php endfor; ?>
       </tbody>
     </table>
+    </div>
     <button type="submit">Calcular Estatísticas</button>
   </form>
 </div>

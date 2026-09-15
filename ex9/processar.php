@@ -24,9 +24,9 @@ for ($i = 0; $i < $n; $i++) {
     if ($n1 < 0) { $n1 = 0; } if ($n1 > 10) { $n1 = 10; }
     if ($n2 < 0) { $n2 = 0; } if ($n2 > 10) { $n2 = 10; }
     $media = ($n1 + $n2) / 2;
-    $linhas .= "<tr><td>$nome</td><td>" . number_format($n1, 1, ',', '.') .
-               "</td><td>" . number_format($n2, 1, ',', '.') .
-               "</td><td><strong>" . number_format($media, 2, ',', '.') . "</strong></td></tr>";
+    $linhas .= "<tr><td data-label=\"Aluno\">$nome</td><td data-label=\"Nota 1\">" . number_format($n1, 1, ',', '.') .
+               "</td><td data-label=\"Nota 2\">" . number_format($n2, 1, ',', '.') .
+               "</td><td data-label=\"Média\"><strong>" . number_format($media, 2, ',', '.') . "</strong></td></tr>";
 }
 
 salvarResultado('ex9', [

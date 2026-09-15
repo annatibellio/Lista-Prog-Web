@@ -29,11 +29,11 @@ require __DIR__ . '/../includes/header.php';
   <div class="conexao">
     💡 Quer simular esse faturamento rendendo com juros? Use-o no <strong>Exercício 5 (Juros Compostos)</strong>.
     <br>
-    <a href="../ex5/index.php?inicial=<?php echo $total; ?>&origem=ex8">Usar R$ <?php echo number_format($total, 2, ',', '.'); ?> no Exercício 5 →</a>
+    <a href="../ex5/index.php?inicial=<?php echo $total; ?>&origem=ex8">Usar R$ <?php echo number_format($total, 2, ',', '.'); ?> no Exercício 5</a>
   </div>
 
   <div class="acoes">
-    <a class="voltar" href="index.php">↻ Calcular novamente</a>
+    <a class="voltar" href="index.php">Calcular novamente</a>
     <a class="ir-menu" href="../index.php">🏠 Voltar ao menu</a>
   </div>
 </div>

@@ -4,6 +4,11 @@
 // salvar/ler resultado (é assim que um exercício consegue reaproveitar
 // o valor calculado em outro, tipo o total do ex1 indo pro ex5).
 
+// sem isso o PHP usa o timezone padrão do servidor (geralmente UTC),
+// e por isso os horários no painel de "resultados desta sessão"
+// apareciam errados (adiantados em relação ao horário local).
+date_default_timezone_set('America/Sao_Paulo');
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }

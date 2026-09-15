@@ -29,12 +29,12 @@ require __DIR__ . '/../includes/header.php';
   <div class="conexao">
     💡 Já usou sua altura aqui? Aproveite no <strong>Exercício 6 (Estatística de Alturas)</strong> como a primeira pessoa do grupo.
     <br>
-    <a href="../ex6/index.php?altura=<?php echo $altura; ?>&origem=ex3">Usar altura <?php echo $altura; ?> m no Exercício 6 →</a>
+    <a href="../ex6/index.php?altura=<?php echo $altura; ?>&origem=ex3">Usar altura <?php echo $altura; ?> m no Exercício 6</a>
   </div>
   <?php endif; ?>
 
   <div class="acoes">
-    <a class="voltar" href="index.php">↻ Calcular novamente</a>
+    <a class="voltar" href="index.php">Calcular novamente</a>
     <a class="ir-menu" href="../index.php">🏠 Voltar ao menu</a>
   </div>
 </div>
