@@ -107,4 +107,4 @@ Esse projeto é PHP puro (não é HTML/CSS/JS estático), então isso muda como 
   - **Local, na própria máquina:** com XAMPP/Laragon, ou rodando `php -S localhost:8000` dentro da pasta `ENTREGA` (se o PHP já estiver instalado).
   - **Hospedagem gratuita com suporte a PHP:** InfinityFree, 000webhost, ou plataformas como Railway/Render com um buildpack de PHP.
 
-Ou seja: o código pode (e deve) ficar no GitHub normalmente, mas se o objetivo for ter um link com o site funcionando de verdade — com os formulários calculando —, precisa de uma dessas opções com PHP, e não do GitHub Pages.
+Ou seja: o código pode (e deve) ficar no GitHub normalmente, mas se o objetivo for ter um link com o site funcionando de verdade, com os formulários calculando, precisa de uma dessas opções com PHP, e não do GitHub Pages.
