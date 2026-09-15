@@ -51,7 +51,7 @@ Cada exercício segue o mesmo padrão (index → processar → resultado), entã
 
 ## Identidade visual e decisões de UX/UI
 
-Depois da primeira entrega, o projeto passou por uma revisão de estética, responsividade, acessibilidade e usabilidade. A ideia não foi refazer o site do zero — a identidade e a estrutura que já existiam foram mantidas — e sim resolver problemas reais de uso e dar mais personalidade ao visual. Principais decisões:
+Depois da primeira entrega, o projeto passou por uma revisão de estética, responsividade, acessibilidade e usabilidade. A ideia não foi refazer o site do zero — a identidade e a estrutura que já existiam foram mantidas, e sim resolver problemas reais de uso e dar mais personalidade ao visual. Principais decisões:
 
 - **Paleta em tons de rosa:** a cor de destaque do site deixou de ser azul/indigo e passou a ser um rosa (`--primary`), com um dourado suave (`--accent`) como cor complementar para caixas de sugestão e detalhes. A ideia foi ter uma estética delicada e com personalidade, mas sem exagerar (nada de rosa neon nem site "infantil") e mantendo bom contraste de texto.
 - **Simplificação da página inicial:** antes existiam dois caminhos fazendo a mesma coisa na primeira tela — o link "Lista de Exercícios" (marca) e o botão "Menu" — e os dois levavam pro mesmo lugar. O botão "Menu" foi removido da página inicial por ser redundante; ele só aparece quando você já está dentro de um exercício, onde de fato tem função (voltar pro menu). Os cards de exercício também ganharam um texto "Abrir exercício" no rodapé do card, deixando mais óbvio que são clicáveis.
