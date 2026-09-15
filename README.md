@@ -101,7 +101,7 @@ Fora essas decisões, o resto segue o enunciado igual, sem inventar nada.
 
 Esse projeto é PHP puro (não é HTML/CSS/JS estático), então isso muda como ele pode ser publicado:
 
-- **Subir o código no GitHub:** funciona normalmente. O GitHub guarda qualquer tipo de arquivo, incluindo `.php`, sem problema — é só criar um repositório e enviar a pasta `ENTREGA` inteira.
+- **Subir o código no GitHub:** funciona normalmente. O GitHub guarda qualquer tipo de arquivo, incluindo `.php`, sem problema, é só criar um repositório e enviar a pasta `ENTREGA` inteira.
 - **GitHub Pages não serve esse site:** o GitHub Pages só publica arquivos estáticos (HTML/CSS/JS). Ele não tem um interpretador de PHP, então um `index.php` aberto por lá não executa: o navegador baixa o arquivo ou mostra o código-fonte, e os formulários/cálculos não funcionam.
 - **Pra rodar de verdade, o PHP precisa ser executado em algum lugar:**
   - **Local, na própria máquina:** com XAMPP/Laragon, ou rodando `php -S localhost:8000` dentro da pasta `ENTREGA` (se o PHP já estiver instalado).
