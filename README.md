@@ -51,10 +51,10 @@ Cada exercício segue o mesmo padrão (index → processar → resultado), entã
 
 ## Identidade visual e decisões de UX/UI
 
-Depois da primeira entrega, o projeto passou por uma revisão de estética, responsividade, acessibilidade e usabilidade. A ideia não foi refazer o site do zero — a identidade e a estrutura que já existiam foram mantidas — e sim resolver problemas reais de uso e dar mais personalidade ao visual. Principais decisões:
+Depois da primeira entrega, o projeto passou por uma revisão de estética, responsividade, acessibilidade e usabilidade. A ideia não foi refazer o site do zero — a identidade e a estrutura que já existiam foram mantidas, e sim resolver problemas reais de uso e dar mais personalidade ao visual. Principais decisões:
 
 - **Paleta em tons de rosa:** a cor de destaque do site deixou de ser azul/indigo e passou a ser um rosa (`--primary`), com um dourado suave (`--accent`) como cor complementar para caixas de sugestão e detalhes. A ideia foi ter uma estética delicada e com personalidade, mas sem exagerar (nada de rosa neon nem site "infantil") e mantendo bom contraste de texto.
-- **Simplificação da página inicial:** antes existiam dois caminhos fazendo a mesma coisa na primeira tela — o link "Lista de Exercícios" (marca) e o botão "Menu" — e os dois levavam pro mesmo lugar. O botão "Menu" foi removido da página inicial por ser redundante; ele só aparece quando você já está dentro de um exercício, onde de fato tem função (voltar pro menu). Os cards de exercício também ganharam um texto "Abrir exercício" no rodapé do card, deixando mais óbvio que são clicáveis.
+- **Simplificação da página inicial:** antes existiam dois caminhos fazendo a mesma coisa na primeira tela, o link "Lista de Exercícios" (marca) e o botão "Menu" — e os dois levavam pro mesmo lugar. O botão "Menu" foi removido da página inicial por ser redundante; ele só aparece quando você já está dentro de um exercício, onde de fato tem função (voltar pro menu). Os cards de exercício também ganharam um texto "Abrir exercício" no rodapé do card, deixando mais óbvio que são clicáveis.
 - **Navegação entre exercícios:** dentro de cada exercício, o topo agora tem um seletor "Ir para..." com a lista dos 10 exercícios, pra trocar de exercício sem precisar voltar pro menu principal a cada vez.
 - **Setas decorativas removidas:** algumas setas (↻, →) que só decoravam botões e links foram removidas, deixando o texto limpo (ex: "Calcular novamente" em vez de "↻ Calcular novamente"). Os ícones que representam cada exercício (💰, 📐, ⚖️ etc.) foram mantidos, porque ajudam a identificar cada card rapidamente e fazem parte da identidade visual que já existia.
 - **Textos que cortavam ou quebravam feio:** os títulos, resultados e textos dentro das caixas de destaque agora usam `overflow-wrap: break-word` e tamanhos de fonte fluidos (`clamp()`), pra nenhuma informação sumir ou ficar cortada em telas estreitas.
@@ -73,8 +73,8 @@ Além da barra, o site também tem: link "Pular para o conteúdo" (aparece ao na
 A responsividade foi repensada pra reorganizar o layout de verdade em vez de só encolher os elementos. Testado nas larguras: ~320–375px (celular pequeno), ~390–430px (celular grande), ~768px (tablet/iPad retrato), ~1024px (iPad paisagem/notebook), ~1280px (notebook) e 1920px+ (desktop). Principais ajustes:
 
 - Formulários em grade (`form-grid`) ficam em duas colunas em telas maiores e em uma coluna só a partir de ~600px de largura.
-- **Tabelas** (exercícios 6 e 9, que têm uma linha por pessoa/aluno) viram uma lista de "cards" empilhados em telas de celular, com cada campo mostrando seu rótulo (ex: "Idade: ...", "Altura (m): ...") em vez de depender de colunas apertadas — assim nada fica ilegível ou cortado. Em telas maiores, continuam como tabela normal, e sempre têm rolagem horizontal de segurança caso o conteúdo não caiba.
-- Inputs de texto usam fonte de 16px, porque abaixo disso o iPhone dá zoom automático ao focar o campo — outro detalhe que atrapalhava o uso no celular.
+- **Tabelas** (exercícios 6 e 9, que têm uma linha por pessoa/aluno) viram uma lista de "cards" empilhados em telas de celular, com cada campo mostrando seu rótulo (ex: "Idade: ...", "Altura (m): ...") em vez de depender de colunas apertadas, assim nada fica ilegível ou cortado. Em telas maiores, continuam como tabela normal, e sempre têm rolagem horizontal de segurança caso o conteúdo não caiba.
+- Inputs de texto usam fonte de 16px, porque abaixo disso o iPhone dá zoom automático ao focar o campo, outro detalhe que atrapalhava o uso no celular.
 - Nenhum elemento deveria conseguir "vazar" pra fora da tela horizontalmente; isso foi testado explicitamente nas larguras citadas acima.
 
 ## Correção do horário no painel de resultados
@@ -101,7 +101,7 @@ Fora essas decisões, o resto segue o enunciado igual, sem inventar nada.
 
 Esse projeto é PHP puro (não é HTML/CSS/JS estático), então isso muda como ele pode ser publicado:
 
-- **Subir o código no GitHub:** funciona normalmente. O GitHub guarda qualquer tipo de arquivo, incluindo `.php`, sem problema — é só criar um repositório e enviar a pasta `ENTREGA` inteira.
+- **Subir o código no GitHub:** funciona normalmente. O GitHub guarda qualquer tipo de arquivo, incluindo `.php`, sem problema, é só criar um repositório e enviar a pasta `ENTREGA` inteira.
 - **GitHub Pages não serve esse site:** o GitHub Pages só publica arquivos estáticos (HTML/CSS/JS). Ele não tem um interpretador de PHP, então um `index.php` aberto por lá não executa: o navegador baixa o arquivo ou mostra o código-fonte, e os formulários/cálculos não funcionam.
 - **Pra rodar de verdade, o PHP precisa ser executado em algum lugar:**
   - **Local, na própria máquina:** com XAMPP/Laragon, ou rodando `php -S localhost:8000` dentro da pasta `ENTREGA` (se o PHP já estiver instalado).
