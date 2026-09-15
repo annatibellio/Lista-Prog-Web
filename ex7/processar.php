@@ -8,6 +8,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 $notas = isset($_POST['notas']) ? $_POST['notas'] : [];
 $notas = array_map('numero', $notas);
+$notas = array_map(function ($n) {
+    if ($n < 0) { return 0; }
+    if ($n > 10) { return 10; }
+    return $n;
+}, $notas);
 
 if (count($notas) === 0) {
     header('Location: index.php');

@@ -21,6 +21,8 @@ for ($i = 0; $i < $n; $i++) {
     $nome  = htmlspecialchars($nomes[$i]);
     $n1    = numero($notas1[$i]);
     $n2    = numero($notas2[$i]);
+    if ($n1 < 0) { $n1 = 0; } if ($n1 > 10) { $n1 = 10; }
+    if ($n2 < 0) { $n2 = 0; } if ($n2 > 10) { $n2 = 10; }
     $media = ($n1 + $n2) / 2;
     $linhas .= "<tr><td>$nome</td><td>" . number_format($n1, 1, ',', '.') .
                "</td><td>" . number_format($n2, 1, ',', '.') .

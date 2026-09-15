@@ -14,7 +14,7 @@ $dias = ["Segunda-feira","Terça-feira","Quarta-feira","Quinta-feira","Sexta-fei
       <?php foreach ($dias as $i => $dia): ?>
         <div class="<?php echo $i === 6 ? 'full' : ''; ?>">
           <label><?php echo $dia; ?> (R$):</label>
-          <input type="number" step="0.01" name="vendas[]" required>
+          <input type="text" inputmode="decimal" pattern="-?[0-9]+([.,][0-9]+)?" placeholder="Ex: 350,00 ou -50,00" name="vendas[]" required>
         </div>
       <?php endforeach; ?>
     </div>

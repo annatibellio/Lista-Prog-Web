@@ -11,11 +11,11 @@ require __DIR__ . '/../includes/header.php';
     <div class="form-grid">
       <div>
         <label for="peso">Peso (kg):</label>
-        <input type="number" step="0.01" min="0" id="peso" name="peso" required>
+        <input type="text" inputmode="decimal" pattern="[0-9]+([.,][0-9]+)?" placeholder="Ex: 60" id="peso" name="peso" required>
       </div>
       <div>
         <label for="altura">Altura (m):</label>
-        <input type="number" step="0.01" min="0" id="altura" name="altura" required>
+        <input type="text" inputmode="decimal" pattern="[0-9]+([.,][0-9]+)?" placeholder="Ex: 1,57" id="altura" name="altura" required>
       </div>
     </div>
     <button type="submit">Calcular</button>

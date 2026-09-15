@@ -28,8 +28,8 @@ require __DIR__ . '/../includes/header.php';
         <tr>
           <td><?php echo $i; ?></td>
           <td><input type="text" name="nome[]" required></td>
-          <td><input type="number" step="0.1" min="0" max="10" name="nota1[]" required></td>
-          <td><input type="number" step="0.1" min="0" max="10" name="nota2[]" required></td>
+          <td><input type="text" inputmode="decimal" pattern="[0-9]+([.,][0-9]+)?" placeholder="Ex: 8,5" name="nota1[]" required></td>
+          <td><input type="text" inputmode="decimal" pattern="[0-9]+([.,][0-9]+)?" placeholder="Ex: 8,5" name="nota2[]" required></td>
         </tr>
       <?php endfor; ?>
       </tbody>

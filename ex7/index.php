@@ -12,7 +12,7 @@ require __DIR__ . '/../includes/header.php';
       <?php for ($i = 1; $i <= 4; $i++): ?>
         <div>
           <label for="nota<?php echo $i; ?>">Nota <?php echo $i; ?>:</label>
-          <input type="number" step="0.1" min="0" max="10" id="nota<?php echo $i; ?>" name="notas[]" required>
+          <input type="text" inputmode="decimal" pattern="[0-9]+([.,][0-9]+)?" placeholder="Ex: 7,5" id="nota<?php echo $i; ?>" name="notas[]" required>
         </div>
       <?php endfor; ?>
     </div>

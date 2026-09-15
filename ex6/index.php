@@ -38,8 +38,8 @@ require __DIR__ . '/../includes/header.php';
         <tr>
           <td><?php echo $i; ?></td>
           <td><input type="number" step="1" min="0" name="idade[]" required></td>
-          <td><input type="number" step="0.01" min="0" name="altura[]"
-                     value="<?php echo ($i === 1 && $alturaPre) ? htmlspecialchars($alturaPre) : ''; ?>" required></td>
+          <td><input type="text" inputmode="decimal" pattern="[0-9]+([.,][0-9]+)?" placeholder="Ex: 1,70" name="altura[]"
+                     value="<?php echo ($i === 1 && $alturaPre) ? htmlspecialchars(number_format($alturaPre, 2, ',', '.')) : ''; ?>" required></td>
         </tr>
       <?php endfor; ?>
       </tbody>

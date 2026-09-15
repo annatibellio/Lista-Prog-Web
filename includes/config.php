@@ -45,10 +45,9 @@ function todosResultados()
 }
 
 // converte texto de input em número, aceitando tanto "1.57" quanto "1,57".
-// o input type="number" do navegador normalmente já manda com ponto, mas
-// isso evita dor de cabeça se alguém colar um valor com vírgula ou digitar
-// de outro jeito. usar essa função no lugar de floatval() direto nos campos
-// decimais (peso, altura, valores em R$, notas, taxa etc).
+// os campos decimais do site são texto (não number), justamente pra não
+// depender do navegador aceitar vírgula ou não. essa função trata os dois
+// formatos antes de calcular. usar no lugar de floatval() direto.
 function numero($valor)
 {
     $valor = trim((string) $valor);

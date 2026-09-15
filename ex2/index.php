@@ -11,15 +11,15 @@ require __DIR__ . '/../includes/header.php';
     <div class="form-grid">
       <div>
         <label for="a">Lado A:</label>
-        <input type="number" step="0.01" min="0" id="a" name="a" required>
+        <input type="text" inputmode="decimal" pattern="[0-9]+([.,][0-9]+)?" placeholder="Ex: 5,5" id="a" name="a" required>
       </div>
       <div>
         <label for="b">Lado B:</label>
-        <input type="number" step="0.01" min="0" id="b" name="b" required>
+        <input type="text" inputmode="decimal" pattern="[0-9]+([.,][0-9]+)?" placeholder="Ex: 5,5" id="b" name="b" required>
       </div>
       <div class="full">
         <label for="c">Lado C:</label>
-        <input type="number" step="0.01" min="0" id="c" name="c" required>
+        <input type="text" inputmode="decimal" pattern="[0-9]+([.,][0-9]+)?" placeholder="Ex: 5,5" id="c" name="c" required>
       </div>
     </div>
     <button type="submit">Classificar</button>

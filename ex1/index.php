@@ -9,7 +9,7 @@ require __DIR__ . '/../includes/header.php';
   <h1>1. Cálculo de Desconto em Compra</h1>
   <form action="processar.php" method="POST">
     <label for="valor">Valor total da compra (R$):</label>
-    <input type="number" step="0.01" min="0" id="valor" name="valor" required>
+    <input type="text" inputmode="decimal" pattern="[0-9]+([.,][0-9]+)?" placeholder="Ex: 150,90" id="valor" name="valor" required>
 
     <label for="codigo">Código do cliente:</label>
     <select id="codigo" name="codigo">
