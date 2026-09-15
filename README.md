@@ -96,3 +96,15 @@ Algumas coisas ficaram um pouco diferentes do jeito mais "cru" que o enunciado p
 - **Ligação entre exercícios:** o valor final do exercício 1 pode ser usado como valor inicial no exercício 5, e a altura do exercício 3 pode ser reaproveitada como a primeira linha do exercício 6. Isso é opcional, aparece só como um link sugerido na tela de resultado, e não interfere em nada se a pessoa ignorar e preencher os exercícios separados.
 
 Fora essas decisões, o resto segue o enunciado igual, sem inventar nada.
+
+## Como rodar / publicar o projeto
+
+Esse projeto é PHP puro (não é HTML/CSS/JS estático), então isso muda como ele pode ser publicado:
+
+- **Subir o código no GitHub:** funciona normalmente. O GitHub guarda qualquer tipo de arquivo, incluindo `.php`, sem problema — é só criar um repositório e enviar a pasta `ENTREGA` inteira.
+- **GitHub Pages não serve esse site:** o GitHub Pages só publica arquivos estáticos (HTML/CSS/JS). Ele não tem um interpretador de PHP, então um `index.php` aberto por lá não executa: o navegador baixa o arquivo ou mostra o código-fonte, e os formulários/cálculos não funcionam.
+- **Pra rodar de verdade, o PHP precisa ser executado em algum lugar:**
+  - **Local, na própria máquina:** com XAMPP/Laragon, ou rodando `php -S localhost:8000` dentro da pasta `ENTREGA` (se o PHP já estiver instalado).
+  - **Hospedagem gratuita com suporte a PHP:** InfinityFree, 000webhost, ou plataformas como Railway/Render com um buildpack de PHP.
+
+Ou seja: o código pode (e deve) ficar no GitHub normalmente, mas se o objetivo for ter um link com o site funcionando de verdade — com os formulários calculando —, precisa de uma dessas opções com PHP, e não do GitHub Pages.
